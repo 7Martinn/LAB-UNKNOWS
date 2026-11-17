@@ -1,0 +1,45 @@
+# BITÁCORA TÉCNICA Y VALIDACIÓN CIENTÍFICA — PROYECTO LAB UNKNOWS
+Asignatura: Física / Computación Científica
+Responsable Científico (Análisis y Validación): Martín Aguayo
+Equipo: Sebastián Tapia, Martín Molina, Martín Aguayo, Diego Vásquez
+
+------------------------------------------------------------------------
+1. HITOS DE VALIDACIÓN TEÓRICO-EXPERIMENTAL (SEMANAS 1 A 14)
+------------------------------------------------------------------------
+- Semana 3: Definición de alcance del proyecto (estudio de fricción dinámica en plano inclinado) y asignación de roles científicos.
+- Semana 7: Formulación del modelo de dinámica traslacional sobre plano inclinado con ángulo $\theta$ y coeficiente de rozamiento cinético $\mu_k$:
+  * Condición de inicio de deslizamiento: $\tan(\theta) > \mu_k$
+  * Aceleración teórica del bloque: $a = g \cdot (\sin(\theta) - \mu_k \cdot \cos(\theta))$, con $g = 9.81\text{ m/s}^2$.
+- Semana 11: Implementación del primer prototipo funcional y verificación de independencia de la masa ($m$) en la aceleración lineal cuando no existen fuerzas externas adicionales.
+- Semana 14: Validación del MVP final desplegado en web, incorporación de telemetría en tiempo real ($x(t)$, $v(t)$, $a$), cálculo de $\mu_{k,\text{exp}}$ y exportación de series de datos (CSV/JSON).
+
+------------------------------------------------------------------------
+2. TABLA DE CONTRASTE Y VERIFICACIÓN DE ERROR RELATIVO
+------------------------------------------------------------------------
+Pruebas ejecutadas sobre el simulador LAB UNKNOWS ($g = 9.81\text{ m/s}^2$, $m = 2.0\text{ kg}$):
+
+1) Superficie: Madera sobre Madera ($\mu_k = 0.28$, $\theta = 30^\circ$)
+   - Aceleración teórica: $3.31\text{ m/s}^2$
+   - Aceleración simulada: $3.31\text{ m/s}^2$
+   - Coeficiente experimental ($\mu_{k,\text{exp}}$): $0.280$
+   - Error relativo porcentual: $0.00\%$
+
+2) Superficie: Acero sobre Acero ($\mu_k = 0.57$, $\theta = 40^\circ$)
+   - Aceleración teórica: $2.02\text{ m/s}^2$
+   - Aceleración simulada: $2.02\text{ m/s}^2$
+   - Coeficiente experimental ($\mu_{k,\text{exp}}$): $0.570$
+   - Error relativo porcentual: $0.00\%$
+
+3) Superficie: Hielo sobre Hielo ($\mu_k = 0.03$, $\theta = 15^\circ$)
+   - Aceleración teórica: $2.25\text{ m/s}^2$
+   - Aceleración simulada: $2.25\text{ m/s}^2$
+   - Coeficiente experimental ($\mu_{k,\text{exp}}$): $0.030$
+   - Error relativo porcentual: $0.00\%$
+
+4) Caso Subcrítico (Sin deslizamiento): Madera sobre Madera ($\mu_k = 0.28$, $\theta = 10^\circ$)
+   - Verificación: $\tan(10^\circ) = 0.176 < 0.28 \rightarrow$ Bloque en reposo ($a = 0.00\text{ m/s}^2$).
+
+------------------------------------------------------------------------
+3. CONCLUSIÓN DE VALIDACIÓN
+------------------------------------------------------------------------
+El motor numérico del simulador reproduce con exactitud analítica el comportamiento cinemático y dinámico esperado para un cuerpo rígido bajo fricción cinética constante, cumpliendo con los criterios científicos establecidos para la entrega de la Semana 14.
